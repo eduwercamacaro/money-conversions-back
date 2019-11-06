@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/conversionsdb
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    enabled: true
+    change-log: classpath:db.changelog.xml
+server:
+  servlet:
+    context-path: /rest
+application:
+  configuration:
+    defaultCurrencyFrom: 0204e581-e1e0-472c-aa06-d604af9662fd
+    defaultCurrencyTo: e349248e-5531-41e4-87d8-ec19251e4bd3

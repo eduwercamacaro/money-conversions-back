@@ -1,0 +1,63 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:appdba="http://www.datical.net/xml/ns/appdba" xmlns:datical="http://www.datical.net/xml/ns/datical" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="eduwer (generated)" id="1573012517438-1">
+        <createTable tableName="currencies">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" primaryKeyName="currencies_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="symbol" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="eduwer (generated)" id="1573012517438-2">
+        <createTable tableName="currency_conversions">
+            <column name="id" type="UUID">s
+                <constraints primaryKey="true" primaryKeyName="currency_conversions_pkey"/>
+            </column>
+            <column name="multiply_rate" type="numeric(16, 6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency_from_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency_to_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="eduwer (generated)" id="1573012517438-3">
+        <addUniqueConstraint columnNames="currency_from_id, currency_to_id" constraintName="uks4es7t76t19tkwo5ypeoxmgly" tableName="currency_conversions"/>
+    </changeSet>
+    <changeSet author="eduwer (generated)" id="1573012517438-4">
+        <addForeignKeyConstraint baseColumnNames="currency_to_id" baseTableName="currency_conversions" constraintName="fkg45m4fkcx1vf1n6abmv1c8c91" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="currencies" validate="true"/>
+    </changeSet>
+    <changeSet author="eduwer (generated)" id="1573012517438-5">
+        <addForeignKeyConstraint baseColumnNames="currency_from_id" baseTableName="currency_conversions" constraintName="fkn7dcnu394ps6iyjb75t7adf91" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="currencies" validate="true"/>
+    </changeSet>
+    <changeSet author="eduwer"
+               id="1573012517411-4">
+        <insert tableName="currencies">
+            <column name="id" value="0204e581-e1e0-472c-aa06-d604af9662fd"/>
+            <column name="name" value="Dolar"/>
+            <column name="symbol" value="$"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="e349248e-5531-41e4-87d8-ec19251e4bd3"/>
+            <column name="name" value="Euro"/>
+            <column name="symbol" value="€"/>
+        </insert>
+    </changeSet>
+    <changeSet author="eduwer"
+               id="1573012517211-5">
+        <insert tableName="currency_conversions">
+            <column name="id" value="3f409546-ff01-4c6f-a564-3baa38037c41"/>
+            <column name="currency_from_id" value="0204e581-e1e0-472c-aa06-d604af9662fd"/>
+            <column name="currency_to_id" value="e349248e-5531-41e4-87d8-ec19251e4bd3"/>
+            <column name="multiply_rate" value="0.90"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
