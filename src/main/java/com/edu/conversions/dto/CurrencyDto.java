@@ -15,5 +15,6 @@ public class CurrencyDto {
 
     private UUID id;
     private String name;
+    private String symbol;
 
 }

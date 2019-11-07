@@ -22,13 +22,3 @@ application:
   configuration:
     defaultCurrencyFrom: 0204e581-e1e0-472c-aa06-d604af9662fd
     defaultCurrencyTo: e349248e-5531-41e4-87d8-ec19251e4bd3
-
----
-spring:
-  profiles: test
-  datasource:
-    url: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE
-    jpa:
-      properties:
-        hibernate:
-          dialect: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE
