@@ -32,6 +32,6 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: build-application
-      - name: debug2
-        run: ls
+      - name: Create Docker image
+        run: docker build -t conversions .
     
