@@ -11,7 +11,7 @@ on:
 
 jobs:
   test:
-    runs-on: [self-hosted]
+    runs-on: [local-eduwer]
     container: gradle:6.7-jdk8
     steps:
     - uses: actions/checkout@v2
