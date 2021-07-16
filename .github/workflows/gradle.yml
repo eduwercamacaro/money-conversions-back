@@ -12,7 +12,7 @@ on:
 jobs:
   test:
     runs-on: [self-hosted]
-    container: gradle
+    container: gradle:6.7-jdk8
     steps:
     - uses: actions/checkout@v2
     - name: build test
