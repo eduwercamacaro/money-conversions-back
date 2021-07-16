@@ -10,7 +10,7 @@ on:
     branches: [ master ]
 
 jobs:
-  test:
+  build-application:
     runs-on: [local-eduwer]
     container: gradle:6.7-jdk8
     steps:
@@ -27,6 +27,7 @@ jobs:
         path: build/libs/*.jar
   build-docker-image:
     runs-on: [local-eduwer]
+    needs: build-application
     container: docker:latest
     steps:
       - uses: actions/download-artifact@v2
