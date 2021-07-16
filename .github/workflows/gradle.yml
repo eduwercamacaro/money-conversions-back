@@ -15,5 +15,8 @@ jobs:
     container: gradle:6.7-jdk8
     steps:
     - uses: actions/checkout@v2
-    - name: build test
+    - name: Unit Tests
       run: gradle clean test
+    - name: Build JAR
+      run: gradle clean bootJar -x test
+    
