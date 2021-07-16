@@ -23,5 +23,5 @@ jobs:
       run: ls
     - uses: actions/upload-artifact@v2
       with: 
-        name: jar-application
-        path: path/to/artifact/world.txt
+        name: build-application
+        path: build
