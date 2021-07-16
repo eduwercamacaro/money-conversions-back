@@ -25,4 +25,13 @@ jobs:
       with: 
         name: build-application
         path: build/libs/*.jar
+  build-docker-image:
+    runs-on: [local-eduwer]
+    container: docker:latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: build-application
+      - name: debug2
+        run: ls
     
