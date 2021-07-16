@@ -20,3 +20,5 @@ jobs:
       run: ls
     - name: debug pwd
       run: pwd
+    - name: apt update test
+      run: apt update
