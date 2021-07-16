@@ -18,5 +18,10 @@ jobs:
     - name: Unit Tests
       run: gradle clean test
     - name: Build JAR
-      run: gradle clean bootJar -x test
-    
+      run: gradle clean build -x test
+    - name: debug
+      run: ls
+    - uses: actions/upload-artifact@v2
+      with: 
+        name: jar-application
+        path: path/to/artifact/world.txt
