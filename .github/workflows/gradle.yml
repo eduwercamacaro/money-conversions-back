@@ -13,12 +13,8 @@ jobs:
   build:
 
     runs-on: [self-hosted]
-    container: centos
+    container: gradle
     steps:
     - uses: actions/checkout@v2
-    - name: debug
-      run: ls
-    - name: debug pwd
-      run: pwd
-    - name: yum update test
-      run: yum -y update
+    - name: build jar
+      run: gradle clean bootJar
