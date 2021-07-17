@@ -33,6 +33,8 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: build-application
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
       - name: Create Docker image
         uses: docker/build-push-action@v2
         with:
