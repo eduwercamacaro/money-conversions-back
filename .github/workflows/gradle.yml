@@ -38,6 +38,6 @@ jobs:
       - name: Create Docker image
         uses: docker/build-push-action@v2
         with:
-          push: false
-          tags: user/app:latest
+          push: true
+          tags: eduwer/money-conversions-back:latest
     
