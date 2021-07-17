@@ -44,9 +44,9 @@ jobs:
         run: ls
       - name: Create Docker image
         uses: docker/build-push-action@v2
-        context: .
         with:
           push: true
+          context: .
           tags: eduwer/money-conversions-back:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
