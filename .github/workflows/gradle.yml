@@ -11,7 +11,7 @@ on:
 
 jobs:
   build-application:
-    runs-on: [local-eduwer]
+    runs-on: [local-eduwer-macos]
     container: gradle:6.7-jdk8
     steps:
     - uses: actions/checkout@v2
