@@ -40,8 +40,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: debug
-        run: ls
       - name: Create Docker image
         uses: docker/build-push-action@v2
         id: docker_build
@@ -51,4 +49,10 @@ jobs:
           tags: eduwer/money-conversions-back:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+  deploy:
+    runs-on: [local-eduwer]
+    needs: build-docker-image
+    steps:
+      - name: deploy container
+        run: docker run -d docker.io/eduwer/money-conversions-back:latest --name moneyconversions-back
     
